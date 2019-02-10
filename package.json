@@ -1,0 +1,52 @@
+{
+  "name": "angular-auth-adal",
+  "version": "0.5.0",
+  "author": "Shigeyuki Fukushima",
+  "license": "MIT",
+  "description": "Angular authentication service modules with Azure Active Directory Authentication Library (ADAL) for JavaScript",
+  "keywords": [
+    "Angular",
+    "ADAL",
+    "AAD"
+  ],
+  "homepage": "https://github.com/shigeyf/angular-auth-adal#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shigeyf/angular-auth-adal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shigeyf/angular-auth-adal/issues"
+  },
+  "scripts": {
+    "clean": "shx rm -rf dist angular-auth-adal-*.tgz",
+    "build:module": "ng-packagr -V && ng-packagr",
+    "package": "cd dist && npm pack && cd .. && shx mv dist/angular-auth-adal-*.tgz .",
+    "build": "npm run clean && npm run build:module && npm run package"
+  },
+  "peerDependencies": {
+    "@angular/common": "^5.2.0",
+    "@angular/core": "^5.2.0",
+    "@angular/platform-browser": "^5.2.0",
+    "@angular/router": "^5.2.0",
+    "adal-angular": "^1.0.17",
+    "rxjs": "^5.5.6",
+    "zone.js": "^0.8.19"
+  },
+  "devDependencies": {
+    "@angular/common": "^6.0.0",
+    "@angular/compiler": "^6.0.0",
+    "@angular/compiler-cli": "^6.0.0",
+    "@angular/core": "^6.0.0",
+    "@angular/platform-browser": "^6.0.0",
+    "@angular/router": "^6.0.0",
+    "adal-angular": "^1.0.17",
+    "ng-packagr": "^4.7.0",
+    "rxjs": "^6.0.0",
+    "rxjs-compat": "^6.0.0",
+    "shx": "^0.3.2",
+    "tsickle": "^0.30.0",
+    "typescript": "^2.7.2",
+    "zone.js": "^0.8.26"
+  },
+  "dependencies": {}
+}
