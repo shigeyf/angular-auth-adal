@@ -6,9 +6,9 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import 'rxjs/add/operator/filter'; // [RxJSv5]
-import 'rxjs/add/operator/map'; // [RxJSv5]
-// import { map, filter } from 'rxjs/operators'; // [RxJSv6]
+// import 'rxjs/add/operator/filter'; // [RxJSv5]
+// import 'rxjs/add/operator/map'; // [RxJSv5]
+import { map, filter } from 'rxjs/operators'; // [RxJSv6]
 
 export type MessageCallback = (payload: any) => void;
 
@@ -30,17 +30,17 @@ export class AdalAuthBroadcastService {
 
     subscribe(type: string, callback: MessageCallback): Subscription {
         // [RxJSv5]
+        /*
         return this._adalSubject.asObservable()
             .filter(message => message.type === type)
             .map(message => message.payload)
             .subscribe(callback);
+        */
         // [RxJSv6]
-        /*
         return this._adalSubject.asObservable()
             .pipe(filter(message => message.type === type))
             .pipe(map(message => message.payload))
             .subscribe(callback);
-        */
     }
 
 }

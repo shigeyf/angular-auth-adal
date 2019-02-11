@@ -5,8 +5,8 @@
  */
 
 import { Inject, Injectable, InjectionToken, NgZone } from '@angular/core';
-import { Observable } from 'rxjs/Rx'; // [RxJSv5]
-// import { Observable, timer } from 'rxjs'; // [RxJSv6]
+// import { Observable } from 'rxjs/Rx'; // [RxJSv5]
+import { Observable, timer } from 'rxjs'; // [RxJSv6]
 import { Router, RouterStateSnapshot } from '@angular/router';
 import * as adaljs from 'adal-angular';
 
@@ -341,8 +341,8 @@ export class AdalAuthService {
     }
     this.ngZone.runOutsideAngular(() => {
       this.verbose('Set Refresh Timer for IdToken: ' + timerDelay + ' seconds.');
-      this._adalAuthRefreshTimer = Observable.timer(timerDelay * 1000).subscribe(() => { this.refreshIdToken(); }); // [RxJSv5]
-      // this._adalAuthRefreshTimer = timer(timerDelay * 1000).subscribe(() => { this.refreshIdToken(); }); // [RxJSv6]
+      // this._adalAuthRefreshTimer = Observable.timer(timerDelay * 1000).subscribe(() => { this.refreshIdToken(); }); // [RxJSv5]
+      this._adalAuthRefreshTimer = timer(timerDelay * 1000).subscribe(() => { this.refreshIdToken(); }); // [RxJSv6]
     });
   }
 

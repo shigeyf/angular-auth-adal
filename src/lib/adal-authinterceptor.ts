@@ -6,12 +6,12 @@
 
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable'; // [RxJSv5]
-import 'rxjs/add/observable/fromPromise'; // [RxJSv5]
-import 'rxjs/add/operator/mergeMap'; // [RxJSv5]
-// import { Observable } from 'rxjs'; // [RxJSv6]
-// import { from } from 'rxjs'; // [RxJSv6]
-// import { tap, mergeMap } from 'rxjs/operators'; // [RxJSv6]
+// import { Observable } from 'rxjs/Observable'; // [RxJSv5]
+// import 'rxjs/add/observable/fromPromise'; // [RxJSv5]
+// import 'rxjs/add/operator/mergeMap'; // [RxJSv5]
+import { Observable } from 'rxjs'; // [RxJSv6]
+import { from } from 'rxjs'; // [RxJSv6]
+import { tap, mergeMap } from 'rxjs/operators'; // [RxJSv6]
 import { AdalAuthService } from './adal-authservice';
 import { AdalAuthBroadcastService } from './adal-authbroadcast.service';
 import { AdalAuthError } from './adal-autherror';
@@ -38,6 +38,7 @@ export class AdalAuthInterceptor implements HttpInterceptor {
                 }
             });
             // [RxJSv5]
+            /*
             return next.handle(req).do(event => {}, err => {
                 if (err instanceof HttpErrorResponse && err.status === 401) {
                     const resource1 = this.adalAuthService.getResourceForEndpoint(req.url);
@@ -49,8 +50,8 @@ export class AdalAuthInterceptor implements HttpInterceptor {
                     this.broadcastService.broadcast('adal:notAuthorized', adalAuthError);
                 }
             });
+            */
             // [RxJSv6]
-            /*
             return next.handle(req).pipe(
                 tap(event => {}, err => {
                     if (err instanceof HttpErrorResponse && err.status === 401) {
@@ -64,10 +65,10 @@ export class AdalAuthInterceptor implements HttpInterceptor {
                     }
                 })
             );
-            */
         } else {
             this.adalAuthService.verbose('Acquiring Access Token for ' + resource);
             // [RxJSv5]
+            /*
             return Observable.fromPromise(this.adalAuthService.acquireToken(resource)
                 .then((authResult: AdalAuthResult) => {
                     const JWT = `Bearer ${authResult.token}`;
@@ -87,8 +88,8 @@ export class AdalAuthInterceptor implements HttpInterceptor {
                     }
                 })
             );
+            */
             // [RxJSv6]
-            /*
             return from(this.adalAuthService.acquireToken(resource)
                 .then((authResult: AdalAuthResult) => {
                     const JWT = `Bearer ${authResult.token}`;
@@ -110,7 +111,6 @@ export class AdalAuthInterceptor implements HttpInterceptor {
                     })
                 ))
             );
-            */
             // calling next.handle means we are passing control to next interceptor in chain
         }
     }
