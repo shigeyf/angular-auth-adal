@@ -9,3 +9,24 @@ This authentication library can be used to authenticate Angular applications aga
 The angular-auth-adal is available on NPM:
 
 `npm install angular-auth-adal --save`
+
+## Sample application
+
+Here is a sample Angular application with this [active-directory-angular-spa](https://github.com/shigeyf/active-directory-angular-spa) module.
+
+## Build
+
+The angular-auth-adal is built on NPM:
+
+1) `npm install1`
+2) `npm run build`
+
+The environment for building this Angular package is:
+
+| Builder           | Version |
+| :---------------- | ------: |
+| ng-packagr        |   4.7.0 |
+| @angular/compiler |  6.1.10 |
+| rollup            |  0.67.4 |
+| tsickle           |  0.30.0 |
+| typescript        |   2.9.2 |
