@@ -10,6 +10,9 @@ The angular-auth-adal is available on NPM:
 
 `npm install angular-auth-adal --save`
 
+* NPM package v0.5.x is for Angular 5 with rxjs v5 or Angular 6 or later with rxjs v6 and rxjs-compat.
+* NPM package v0.6.x or later is for Angular 6 or 7 with rxjs v6 (without rxjs-compat)
+
 ## Sample application
 
 Here is a sample Angular application with this [active-directory-angular-spa](https://github.com/shigeyf/active-directory-angular-spa) module.
@@ -18,7 +21,7 @@ Here is a sample Angular application with this [active-directory-angular-spa](ht
 
 The angular-auth-adal is built on NPM:
 
-1) `npm install1`
+1) `npm install`
 2) `npm run build`
 
 The environment for building this Angular package is:
